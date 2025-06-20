@@ -20,6 +20,7 @@ const meta = {
         checked: false,
         id: 'checkbox',
         label: 'Checkbox',
+        focusable: false,
         onChange: () => {},
     },
     argTypes: {
