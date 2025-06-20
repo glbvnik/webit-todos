@@ -11,7 +11,7 @@ interface ListItemProps {
     comment?: string
     estimatedTimestamp: number
     successTimestamp?: number
-    onCheck: (checked: boolean) => void
+    onCheck: (checked: boolean, id: string) => void
 }
 
 const ListItem: FC<ListItemProps> = ({
@@ -24,7 +24,7 @@ const ListItem: FC<ListItemProps> = ({
     successTimestamp,
     onCheck,
 }) => {
-    const handleKeyDown = useKeyboardToggle(checked, onCheck)
+    const handleKeyDown = useKeyboardToggle(checked, id, onCheck)
 
     return (
         <li

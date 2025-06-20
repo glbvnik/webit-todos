@@ -10,11 +10,11 @@ interface CheckboxProps {
     id: string
     label: string
     focusable?: boolean
-    onChange: (checked: boolean) => void
+    onChange: (checked: boolean, id: string) => void
 }
 
 const Checkbox: FC<CheckboxProps> = ({ checked, id, label, focusable, onChange }) => {
-    const handleKeyDown = useKeyboardToggle(checked, onChange)
+    const handleKeyDown = useKeyboardToggle(checked, id, onChange)
 
     const accessibilityProps: AccessibilityProps = focusable
         ? { tabIndex: 0, 'aria-checked': checked, role: 'checkbox', onKeyDown: handleKeyDown }
@@ -22,7 +22,14 @@ const Checkbox: FC<CheckboxProps> = ({ checked, id, label, focusable, onChange }
 
     return (
         <label htmlFor={id} className="flex items-center gap-[10px]">
-            <input readOnly id={id} className="sr-only" type="checkbox" checked={checked} />
+            <input
+                readOnly
+                id={id}
+                className="sr-only"
+                type="checkbox"
+                checked={checked}
+                tabIndex={-1}
+            />
             <div
                 className={classNames(
                     'size-6 flex items-center justify-center border-2 rounded-xs cursor-pointer shrink-0 transition',
@@ -31,7 +38,7 @@ const Checkbox: FC<CheckboxProps> = ({ checked, id, label, focusable, onChange }
                         'bg-white border-gray-500': !checked,
                     }
                 )}
-                onClick={() => onChange(!checked)}
+                onClick={() => onChange(!checked, id)}
                 {...accessibilityProps}
             >
                 {checked && <Checkmark />}

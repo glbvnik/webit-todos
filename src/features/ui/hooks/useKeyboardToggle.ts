@@ -2,16 +2,17 @@ import { KeyboardEvent, useCallback } from 'react'
 
 export const useKeyboardToggle = (
     checked: boolean,
-    onToggle: (checked: boolean) => void
+    id: string,
+    onToggle: (checked: boolean, id: string) => void
 ): ((event: KeyboardEvent) => void) => {
     return useCallback(
         (event: KeyboardEvent) => {
             if (event.key === ' ' || event.key === 'Enter') {
                 event.preventDefault()
 
-                onToggle(!checked)
+                onToggle(!checked, id)
             }
         },
-        [checked, onToggle]
+        [checked, id, onToggle]
     )
 }
