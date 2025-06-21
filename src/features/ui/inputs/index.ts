@@ -3,3 +3,4 @@ export { default as InputField } from '@/features/ui/inputs/components/InputFiel
 export { default as InputFieldWithLabel } from '@/features/ui/inputs/components/InputFieldWithLabel'
 export { default as TextareaField } from '@/features/ui/inputs/components/TextareaField'
 export { default as TextareaFieldWithLabel } from '@/features/ui/inputs/components/TextareaFieldWithLabel'
+export { default as Timepicker } from '@/features/ui/inputs/components/Timepicker'
