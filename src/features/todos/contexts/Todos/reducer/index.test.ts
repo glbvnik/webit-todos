@@ -98,4 +98,23 @@ describe('reducer', () => {
             expect(state).toBe(initialState)
         })
     })
+
+    it('handles CommentTodo action', () => {
+        const initialState: State = {
+            byId: { [newTodo1.id]: newTodo1 },
+            todoIds: [newTodo1.id],
+            doneIds: [],
+        }
+
+        const comment = 'This is a test comment'
+
+        const action: Action = { type: Actions.CommentTodo, comment, id: newTodo1.id }
+
+        const state = reducer(initialState, action)
+
+        expect(state.byId[newTodo1.id].comment).toBe(comment)
+        expect(state.byId[newTodo1.id].updatedTimestamp).toBe(nowTimestamp)
+        expect(state.todoIds).toEqual(initialState.todoIds)
+        expect(state.doneIds).toEqual(initialState.doneIds)
+    })
 })

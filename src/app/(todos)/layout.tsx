@@ -3,10 +3,16 @@ import { FC, ReactNode } from 'react'
 
 interface LayoutProps {
     children: ReactNode
+    todoModal: ReactNode
 }
 
-const Layout: FC<LayoutProps> = ({ children }) => {
-    return <TodosProvider>{children}</TodosProvider>
+const Layout: FC<LayoutProps> = ({ children, todoModal }) => {
+    return (
+        <TodosProvider>
+            {children}
+            {todoModal}
+        </TodosProvider>
+    )
 }
 
 export default Layout

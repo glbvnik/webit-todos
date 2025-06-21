@@ -1,3 +1,4 @@
+import NavigationHistoryProvider from '@/contexts/NavigationHistory'
 import '@/styles/globals.css'
 import { FC, ReactNode } from 'react'
 
@@ -8,7 +9,9 @@ interface RootLayoutProps {
 const RootLayout: FC<RootLayoutProps> = ({ children }) => {
     return (
         <html>
-            <body>{children}</body>
+            <body>
+                <NavigationHistoryProvider>{children}</NavigationHistoryProvider>
+            </body>
         </html>
     )
 }

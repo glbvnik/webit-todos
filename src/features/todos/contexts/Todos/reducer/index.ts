@@ -46,6 +46,21 @@ export const reducer = (state: State, action: Action): State => {
                 doneIds: state.doneIds.filter((doneId) => doneId !== id),
             }
         }
+        case Actions.CommentTodo: {
+            const { comment, id } = action
+
+            const todo = state.byId[id]
+
+            if (!todo) return state
+
+            const updatedTodo: Todo = {
+                ...todo,
+                comment,
+                updatedTimestamp: dayjs().valueOf(),
+            }
+
+            return { ...state, byId: { ...state.byId, [id]: updatedTodo } }
+        }
         default:
             return state
     }

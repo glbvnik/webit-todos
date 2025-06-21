@@ -1,7 +1,7 @@
 import Header from '@/features/todos/components/TodoList/parts/Header'
 import ListItem from '@/features/todos/components/TodoList/parts/ListItem'
 import { Todo } from '@/features/todos/types'
-import { FC, memo } from 'react'
+import { FC } from 'react'
 
 interface TodoListProps {
     header: string
@@ -32,4 +32,4 @@ const TodoList: FC<TodoListProps> = ({ header, todos, onTodoCheck }) => {
     )
 }
 
-export default memo(TodoList)
+export default TodoList
