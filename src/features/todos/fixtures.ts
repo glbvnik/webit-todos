@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 
 const nowTimestamp = dayjs().valueOf()
 
-const todo1: Todo = {
+export const newTodo1: Todo = {
     id: 'todo-1',
     name: 'Todo 1',
     description: 'Mauris pharetra tristique odio, et sodales mi efficitur ac.',
@@ -12,7 +12,7 @@ const todo1: Todo = {
     estimatedTimestamp: nowTimestamp,
 } as const
 
-const todo2: Todo = {
+const newTodo2: Todo = {
     id: 'todo-2',
     name: 'Todo 2',
     description:
@@ -23,7 +23,7 @@ const todo2: Todo = {
     estimatedTimestamp: nowTimestamp,
 } as const
 
-const todo3: Todo = {
+export const doneTodo1: Todo = {
     id: 'todo-3',
     name: 'Todo 3',
     description:
@@ -35,7 +35,7 @@ const todo3: Todo = {
     successTimestamp: nowTimestamp,
 } as const
 
-const todo4: Todo = {
+const doneTodo2: Todo = {
     id: 'todo-4',
     name: 'Todo 4',
     description:
@@ -48,4 +48,4 @@ const todo4: Todo = {
     successTimestamp: nowTimestamp,
 } as const
 
-export const todos = [todo1, todo2, todo3, todo4] as const
+export const todos = [newTodo1, newTodo2, doneTodo1, doneTodo2] as const

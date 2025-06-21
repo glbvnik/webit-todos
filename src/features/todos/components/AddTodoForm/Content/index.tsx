@@ -1,6 +1,10 @@
 import Errors from '@/features/todos/components/AddTodoForm/Content/parts/Errors'
 import EstimatedDateTime from '@/features/todos/components/AddTodoForm/Content/parts/EstimatedDateTime'
-import { useFormRegister, useFormSubmit } from '@/features/todos/components/AddTodoForm/form'
+import {
+    useFormRegister,
+    useFormReset,
+    useFormSubmit,
+} from '@/features/todos/components/AddTodoForm/form'
 import { FormKeys } from '@/features/todos/components/AddTodoForm/form/constants'
 import { OnSubmit } from '@/features/todos/components/AddTodoForm/types'
 import { Button } from '@/features/ui/buttons'
@@ -15,7 +19,13 @@ interface ContentProps {
 const Content: FC<ContentProps> = ({ onSubmit }) => {
     const register = useFormRegister()
 
-    const handleSubmit = useFormSubmit(onSubmit)
+    const reset = useFormReset()
+
+    const handleSubmit = useFormSubmit((form) => {
+        onSubmit(form)
+
+        reset()
+    })
 
     return (
         <form className="flex flex-col w-full max-w-[360px] px-[8px]">

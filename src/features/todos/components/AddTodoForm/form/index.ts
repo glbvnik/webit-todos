@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import {
     FieldErrors,
     UseFormRegister,
+    UseFormReset,
     UseFormReturn,
     useController,
     useFormContext,
@@ -41,4 +42,10 @@ export const useFormSubmit = (onFormSubmit: (form: Form) => void) => {
     const { handleSubmit } = useFormContext<Form>()
 
     return handleSubmit(onFormSubmit)
+}
+
+export const useFormReset = (): UseFormReset<Form> => {
+    const { reset } = useFormContext<Form>()
+
+    return reset
 }

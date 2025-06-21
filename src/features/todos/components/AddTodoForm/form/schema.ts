@@ -1,4 +1,5 @@
 import { FormKeys } from '@/features/todos/components/AddTodoForm/form/constants'
+import { formatEstimatedDateTime } from '@/features/todos/utils/formatEstimatedDateTime'
 import dayjs from 'dayjs'
 import { z } from 'zod/v4'
 
@@ -11,11 +12,7 @@ export const schema = z
     })
     .refine(
         ({ estimatedDate, estimatedTime }) => {
-            const [hour, minute] = estimatedTime.split(':').map(Number)
-
-            return dayjs(
-                dayjs(estimatedDate).hour(hour).minute(minute).second(0).millisecond(0)
-            ).isAfter(dayjs())
+            return dayjs(formatEstimatedDateTime(estimatedDate, estimatedTime)).isAfter(dayjs())
         },
         { error: 'Estimated date time must not be in the past.' }
     )

@@ -1,7 +1,7 @@
 import Header from '@/features/todos/components/TodoList/parts/Header'
 import ListItem from '@/features/todos/components/TodoList/parts/ListItem'
 import { Todo } from '@/features/todos/types'
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 interface TodoListProps {
     header: string
@@ -11,7 +11,7 @@ interface TodoListProps {
 
 const TodoList: FC<TodoListProps> = ({ header, todos, onTodoCheck }) => {
     return (
-        <section>
+        <section className="w-full max-w-[325px]">
             <Header>{header}</Header>
             <ul className="flex flex-col mt-[16px] gap-[16px]">
                 {todos.map((todo) => (
@@ -32,4 +32,4 @@ const TodoList: FC<TodoListProps> = ({ header, todos, onTodoCheck }) => {
     )
 }
 
-export default TodoList
+export default memo(TodoList)

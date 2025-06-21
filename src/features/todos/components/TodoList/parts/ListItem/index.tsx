@@ -1,7 +1,7 @@
 import { Comment, DateTime, Description } from '@/features/todos/components/Todo'
 import { useKeyboardToggle } from '@/features/ui/hooks/useKeyboardToggle'
 import { Checkbox } from '@/features/ui/inputs'
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 interface ListItemProps {
     checked: boolean
@@ -50,4 +50,4 @@ const ListItem: FC<ListItemProps> = ({
     )
 }
 
-export default ListItem
+export default memo(ListItem)
